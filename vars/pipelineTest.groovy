@@ -36,7 +36,7 @@ def call(String projectUrl = 'undefined', String projectName = 'undefined', Stri
 
             stage("loadtest") {
                 steps {
-                    echo "Running the test in ${env} with ${load} load for ${duration}\n"
+                    echo "Running the test in ${params.env} with ${params.load} load for ${params.duration}\n"
                     ansiColor("xterm") {
                         sh "echo 'Running the test!'"
                     }
