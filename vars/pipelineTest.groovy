@@ -3,12 +3,10 @@ def call(String env = 'undefined', String load = 'undefined', String duration = 
 
         agent any
 
-        environment {
-            PROJECT_REPO = "git@github.com:smithbr/dotfiles.git"
-            PROJECT_REPO_NAME = "smithbr/dotfiles"
-            THIS_PROJECT = "dotfiles"
-            THIS_TEST = "DotFilesTest"
-        }
+        String PROJECT_REPO = "git@github.com:smithbr/dotfiles.git"
+        String PROJECT_REPO_NAME = "smithbr/dotfiles"
+        String THIS_PROJECT = "dotfiles"
+        String THIS_TEST = "DotFilesTest"
 
         parameters {
             choice (name: "env",
