@@ -41,7 +41,7 @@ def call(String env = 'undefined', String load = 'undefined', String duration = 
                 steps {
                     echo "Running the test in ${params.env} with ${params.load} load for ${params.duration}\n"
                     ansiColor("xterm") {
-                        sh "Running the test!"
+                        sh "echo 'Running the test!''"
                     }
                 }
             }
