@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call(String projectUrl = '', String projectName = '', String thisTest = '') {
+def call(String projectUrl = 'undefined', String projectName = 'undefined', String thisTest = 'undefined', String choiceList = 'undefined') {
     pipeline {
 
         agent any
@@ -14,7 +14,7 @@ def call(String projectUrl = '', String projectName = '', String thisTest = '') 
                     choices: "singleuser\nlight\nnormal\npeak\n2peak\n3peak\n")
             choice (name: "duration",
                     description: "",
-                    choices: "30s\n1m\n5m\n10m\n30m\n1h\n2h\n")
+                    choices: "${choiceList}")
             string (name: "branch",
                     description: "Choose which branch to check out the test",
                     defaultValue: "master")
