@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call(def projectUrl, def projectName, def thisTest, def parameterChoiceEnv, def parameterChoiceLoad, def parameterChoiceDuration, def parameterStringBranch) {
+def call(projectUrl, projectName, thisTest, parameterChoiceEnv, parameterChoiceLoad, parameterChoiceDuration, parameterStringBranch) {
     pipeline {
 
         agent any
