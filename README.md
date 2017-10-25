@@ -4,6 +4,6 @@
 
 ## Jenkins configuration
 
-![](https://raw.githubusercontent.com/smithbr/pipeline-library-example/screenshots/1.png)
-![](https://raw.githubusercontent.com/smithbr/pipeline-library-example/screenshots/2.png)
-![](https://raw.githubusercontent.com/smithbr/pipeline-library-example/screenshots/3.png)
+![](https://github.com/smithbr/pipeline-library-example/raw/master/screenshots/1.png)
+![](https://github.com/smithbr/pipeline-library-example/raw/master/screenshots/2.png)
+![](https://github.com/smithbr/pipeline-library-example/raw/master/screenshots/3.png)
