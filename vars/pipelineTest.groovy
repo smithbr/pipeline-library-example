@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call(String projectUrl = 'undefined', String projectName = 'undefined', String thisTest = 'undefined', String choiceList = 'undefined') {
+def call(String projectUrl = 'undefined', String projectName = 'undefined', String thisTest = 'undefined', String parameterChoiceEnv = 'undefined', String parameterChoiceLoad = 'undefined', String parameterChoiceDuration = 'undefined', String parameterStringBranch = 'undefined') {
     pipeline {
 
         agent any
@@ -8,16 +8,16 @@ def call(String projectUrl = 'undefined', String projectName = 'undefined', Stri
         parameters {
             choice (name: "env",
                     description: "",
-                    choices: "qa\nprod\nstage\n")
+                    choices: "${parameterChoiceEnv}")
             choice (name: "load",
                     description: "",
-                    choices: "singleuser\nlight\nnormal\npeak\n2peak\n3peak\n")
+                    choices: "${parameterChoiceLoad}")
             choice (name: "duration",
                     description: "",
-                    choices: "${choiceList}")
+                    choices: "${parameterChoiceDuration}")
             string (name: "branch",
                     description: "Choose which branch to check out the test",
-                    defaultValue: "master")
+                    defaultValue: "${parameterStringBranch}")
         }
 
         stages {
