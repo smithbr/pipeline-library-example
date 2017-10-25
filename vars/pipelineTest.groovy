@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call(String projectUrl = 'undefined', String projectName = 'undefined', String thisTest = 'undefined', String parameterChoiceEnv = 'undefined', String parameterChoiceLoad = 'undefined', String parameterChoiceDuration = 'undefined', String parameterStringBranch = 'undefined') {
+def call(String projectUrl, String projectName, String thisTest, String parameterChoiceEnv, String parameterChoiceLoad, String parameterChoiceDuration, String parameterStringBranch) {
     pipeline {
 
         agent any
@@ -30,7 +30,7 @@ def call(String projectUrl = 'undefined', String projectName = 'undefined', Stri
 
             stage("checkout") {
                 steps {
-                    echo "Checking out the ${projectName} project from the ${branch} branch in ${projectUrl}\n"
+                    echo "Checking out the ${projectName} project from the ${params.branch} branch in ${projectUrl}\n"
                 }
             }
 
