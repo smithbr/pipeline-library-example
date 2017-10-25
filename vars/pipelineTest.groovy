@@ -1,25 +1,52 @@
-def call(int buildNumber) {
-  if (buildNumber % 2 == 0) {
+def call(String env = 'undefined', String load = 'undefined', String duration = 'undefined') {
     pipeline {
-      agent any
-      stages {
-        stage('Even Stage') {
-          steps {
-            echo "The build number is even"
-          }
+
+        agent any
+
+        environment {
+            PROJECT_REPO = "git@github.com:smithbr/dotfiles.git"
+            PROJECT_REPO_NAME = "smithbr/dotfiles"
+            THIS_PROJECT = "dotfiles"
+            THIS_TEST = "DotFilesTest"
         }
-      }
-    }
-  } else {
-    pipeline {
-      agent any
-      stages {
-        stage('Odd Stage') {
-          steps {
-            echo "The build number is odd"
-          }
+
+        parameters {
+            choice (name: "env",
+                    description: "",
+                    choices: "qa\nprod\nstage\n")
+            choice (name: "load",
+                    description: "",
+                    choices: "singleuser\nlight\nnormal\npeak\n2peak\n3peak\n")
+            choice (name: "duration",
+                    description: "",
+                    choices: "30s\n1m\n5m\n10m\n30m\n1h\n2h\n")
+            string (name: "branch",
+                    description: "Choose which branch to check out the test",
+                    defaultValue: "master")
         }
-      }
+
+        stages {
+
+            stage("clean") {
+                steps {
+                    cleanWs()
+                }
+            }
+
+            stage("checkout") {
+                steps {
+                    echo "Checking out the ${THIS_PROJECT} project from the ${branch} branch in ${PROJECT_REPO_NAME}\n"
+                }
+            }
+
+            stage("loadtest") {
+                steps {
+                    echo "Running the test in ${params.env} with ${params.load} load for ${params.duration}\n"
+                    ansiColor("xterm") {
+                        sh "Running the test!"
+                    }
+                }
+            }
+        }
     }
-  }
 }
