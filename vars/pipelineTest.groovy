@@ -1,12 +1,9 @@
-def call(String env = 'undefined', String load = 'undefined', String duration = 'undefined') {
+#!/usr/bin/env groovy
+
+def call(String projectUrl = '', String projectName = '', String thisTest = '') {
     pipeline {
 
         agent any
-
-        String PROJECT_REPO = "git@github.com:smithbr/dotfiles.git"
-        String PROJECT_REPO_NAME = "smithbr/dotfiles"
-        String THIS_PROJECT = "dotfiles"
-        String THIS_TEST = "DotFilesTest"
 
         parameters {
             choice (name: "env",
@@ -33,7 +30,7 @@ def call(String env = 'undefined', String load = 'undefined', String duration = 
 
             stage("checkout") {
                 steps {
-                    echo "Checking out the ${THIS_PROJECT} project from the ${branch} branch in ${PROJECT_REPO_NAME}\n"
+                    echo "Checking out the ${projectName} project from the ${branch} branch in ${projectUrl}\n"
                 }
             }
 
