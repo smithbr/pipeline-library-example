@@ -11,4 +11,10 @@ def parameterChoiceLoad = "singleuser\nlight\nnormal\npeak\n2peak\n3peak\n"
 def parameterChoiceDuration = "30s\n1m\n5m\n10m\n30m\n1h\n2h\n"
 def parameterStringBranch = "master"
 
-pipelineTest(projectUrl, projectName, thisTest, parameterChoiceEnv, parameterChoiceLoad, parameterChoiceDuration, parameterStringBranch)
+performancePipeline(projectUrl,
+                    projectName,
+                    thisTest,
+                    parameterChoiceEnv,
+                    parameterChoiceLoad,
+                    parameterChoiceDuration,
+                    parameterStringBranch)
