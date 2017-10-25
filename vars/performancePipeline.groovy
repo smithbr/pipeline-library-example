@@ -1,5 +1,4 @@
 #!/usr/bin/env groovy
-
 def call(projectUrl, projectName, thisTest, parameterChoiceEnv, parameterChoiceLoad, parameterChoiceDuration, parameterStringBranch) {
     pipeline {
 

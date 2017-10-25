@@ -1,3 +1,4 @@
+#!/usr/bin/env groovy
 @Library('sqe-ci') _
 
 // test details
