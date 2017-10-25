@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-def call(projectUrl, projectName, thisTest, parameterChoiceEnv, parameterChoiceLoad, parameterChoiceDuration, parameterStringBranch) {
+def call(body) {
     pipeline {
 
         agent any
@@ -7,16 +7,16 @@ def call(projectUrl, projectName, thisTest, parameterChoiceEnv, parameterChoiceL
         parameters {
             choice (name: "env",
                     description: "",
-                    choices: "${parameterChoiceEnv}")
+                    choices: "${config.parameterChoiceEnv}")
             choice (name: "load",
                     description: "",
-                    choices: "${parameterChoiceLoad}")
+                    choices: "${config.parameterChoiceLoad}")
             choice (name: "duration",
                     description: "",
-                    choices: "${parameterChoiceDuration}")
+                    choices: "${config.parameterChoiceDuration}")
             string (name: "branch",
                     description: "Choose which branch to check out the test",
-                    defaultValue: "${parameterStringBranch}")
+                    defaultValue: "${config.parameterStringBranch}")
         }
 
         stages {
@@ -29,7 +29,7 @@ def call(projectUrl, projectName, thisTest, parameterChoiceEnv, parameterChoiceL
 
             stage("checkout") {
                 steps {
-                    echo "Checking out the ${projectName} project from the ${params.branch} branch in ${projectUrl}\n"
+                    echo "Checking out the ${config.projectName} project from the ${params.branch} branch in ${config.projectUrl}\n"
                 }
             }
 
