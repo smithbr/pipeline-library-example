@@ -1,5 +1,8 @@
 #!/usr/bin/env groovy
-def call(body) {
+def call() {
+
+    def config = [:]
+
     pipeline {
 
         agent any
